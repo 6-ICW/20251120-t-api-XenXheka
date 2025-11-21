@@ -14,19 +14,32 @@
 const { sinterklaasGeschenken: geschenken } = require("../databank/data");
 
 const lijstGeschenken = (req, res) => {
-  res.json(geschenken);
+let gescheknk  = []
+  geschenken.forEach((geschenkje) => {
+    const nieuwgeschenk =
+    {
+      id: geschenkje.id,
+      naam: geschenkje.naam
+    }
+    gescheknk.push(nieuwgeschenk)
+  
+  })
+  res.json(gescheknk)
 };
 
 const geschenkInfo = (req, res) => {
+  const geschenk = geschenken.find((cadeau) => cadeau.id == req.params.ID)
+  res.json(geschenk)
   res.json({ status: "gelukt" });
 };
 
 const geschenkToevoegen = (req, res) => {
+ 
   const newGeschenk = {
-    id: 15,
-    naam: "KarelKleintjes-tshirt",
-    categorie: "textiel",
-    prijs: 20.5,
+    id: newID(geschenken),
+    naam: req.body.naam,
+    categorie: req.body.categorie,
+    prijs: req.body.prijs,
   };
   geschenken.push(newGeschenk);
   res.json(newGeschenk);
