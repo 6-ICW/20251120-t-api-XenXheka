@@ -9,3 +9,31 @@
  *
  * succes!!
  */
+
+const kinderen = require("../databank/data")
+const getAll = (req,res) => {
+    res.json(kinderen.kindjes)
+}
+
+const addOne = (req,res) => {
+    const newKind =
+    {
+      id: newID(kinderen.kindjes),
+      voornaam: req.body.voornaam,
+      naam: req.body.naam,
+      geschenkId: req.body.geschenkId
+    }
+    kinderen.kindjes.push(newKind)
+    res.json(newKind)
+}
+const newID = (lijstMetID) => {
+  lijstMetID.forEach((item) => {
+    maxID = 0;
+    item.id > maxID ? (maxID = item.id) : (maxID = maxID);
+  });
+  return maxID + 1;
+};
+
+module.exports = {
+    getAll,
+}

@@ -1,5 +1,5 @@
 const express = require("express");
-const ctrlGeschenk = require("../controllers/geschenken");
+
 const ctrlkinderen = require("../controllers/kinderen");
 
 // maak router object aan
@@ -7,11 +7,8 @@ const routes = express.Router();
 
 // maak de verschillende routs aan
 
-routes.get("/", ctrlGeschenk.lijstGeschenken);
-routes.get("/:ID", ctrlGeschenk.geschenkInfo);
-routes.put("/", ctrlGeschenk.geschenkToevoegen);
-routes.delete("/:ID", ctrlGeschenk.geschenkWissen);
 routes.get("/", ctrlkinderen.getAll);
+routes.put("/", ctrlkinderen.getAll);
 
 // exporteer het router object
 module.exports = routes;
