@@ -8,7 +8,7 @@ const routes = express.Router();
 // maak de verschillende routs aan
 
 routes.get("/", ctrlkinderen.getAll);
-routes.put("/", ctrlkinderen.getAll);
+routes.put("/", ctrlkinderen.getAll); // getAll op te putten? 
 
 // exporteer het router object
 module.exports = routes;
